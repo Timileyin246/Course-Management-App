@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course Management Application</title>
+    <link rel="stylesheet" href="./assets/css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Science+Gothic:wght@100..900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="header-content">
+                <h1>Course Manager</h1>
+                <button class="nav-btn" data-view="add">Add course</button>
+            </div>
+        </header>
+
+        <nav>
+            <button class="nav-btn active" data-view="dashboard">Dashboard</button>
+            <button class="nav-btn" data-view="courses">Courses</button>
+        </nav>
+
+        
+        <div id="dashboardView" class="view active">
+            <div class="dashboard-grid">
+                <div class="stat-card">
+                    <div class="stat-label">Total Courses</div>
+                    <div class="stat-value" id="totalCourses">0</div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-label">Total Credits</div>
+                    <div class="stat-value" id="totalCredits">0</div>
+                </div>
+            </div>
+
+            <div class="recent-courses">
+                <h3 class="recent-title">Recent Courses</h3>
+                <div id="recentCoursesList"></div>
+            </div>
+        </div>
+
+        <div id="coursesView" class="view">
+            <div class="courses-grid" id="coursesGrid"></div>
+        </div>
+
+        <div id="addView" class="view">
+            <div class="add-new-course">
+                <h2>Add New Course</h2>
+                <form id="courseForm">
+                    <div class="form-group">
+                        <label>Course Code *</label>
+                        <input type="text" id="courseCode" placeholder="CSC 101" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Course Title *</label>
+                        <input type="text" id="courseTitle" placeholder="Introduction to Computer Science" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Credit Units *</label>
+                        <input type="number" id="creditUnits" min="1" max="6" placeholder="3" required>
+                    </div>
+
+                    <div class="add-btn">
+                        <button type="button" class="btn btn-secondary" id="cancelBtn">Cancel</button>
+                        <button type="submit" class="btn btn-primary">Add Course</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="editModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Edit Course</h2>
+                <button class="close-btn" id="closeModal">&times;</button>
+            </div>
+
+            <form id="editForm">
+                <input type="hidden" id="editId">
+                <div class="form-group">
+                    <label>Course Code * </label>
+                    <input type="text" id="editCourseCode" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Course Title *</label>
+                    <input type="text" id="editCourseTitle" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Credit Units *</label>
+                    <input type="number" id="editCreditUnits" min="1" max="6" required>
+                </div>
+
+                <div class="edit-btn">
+                    <button type="button" class="btn btn-secondary" id="cancelEdit">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Save changes</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="./assets/js/script.js"></script>
+</body>
+</html>
